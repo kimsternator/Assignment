@@ -5,6 +5,8 @@ from pyramid.renderers import render_to_response
 import mysql.connector as mysql
 import os
 
+import json
+
 db_user = os.environ['MYSQL_USER']
 db_pass = os.environ['MYSQL_PASSWORD']
 db_name = os.environ['MYSQL_DATABASE']
@@ -20,6 +22,60 @@ def get_home(req):
 
   return render_to_response('templates/coming_soon.html', {'users': records}, request=req)
 
+def welcome(req):
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select first_name, last_name, email from Users;")
+  records = cursor.fetchall()
+  db.close()
+
+  return render_to_response('templates/coming_soon.html', {'users': records}, request=req)
+
+def cv(req):
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select first_name, last_name, email from Users;")
+  records = cursor.fetchall()
+  db.close()
+
+  return render_to_response('templates/coming_soon.html', {'users': records[0]}, request=req)
+
+def avatar(req):
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select first_name, last_name, email from Users;")
+  records = cursor.fetchall()
+  db.close()
+
+  return render_to_response('templates/coming_soon.html', {'users': records[0]}, request=req)
+
+def personal(req):
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select first_name, last_name, email from Users;")
+  records = cursor.fetchall()
+  db.close()
+
+  return render_to_response('templates/coming_soon.html', {'users': records[0]}, request=req)
+
+def education(req):
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select first_name, last_name, email from Users;")
+  records = cursor.fetchall()
+  db.close()
+
+  return render_to_response('templates/coming_soon.html', {'users': records[0]}, request=req)
+
+def project(req):
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select first_name, last_name, email from Users;")
+  records = cursor.fetchall()
+  db.close()
+
+  return render_to_response('templates/coming_soon.html', {'users': records[0]}, request=req)
+
 ''' Route Configurations '''
 if __name__ == '__main__':
   config = Configurator()
@@ -29,6 +85,24 @@ if __name__ == '__main__':
 
   config.add_route('get_home', '/')
   config.add_view(get_home, route_name='get_home')
+
+  config.add_out("welcome", "/welcome")
+  config.add_view(welcome, route_name="welcome")
+
+  config.add_out("cv", "/cv")
+  config.add_view(cv, route_name="cv")
+
+  config.add_out("avatar", "/avatar")
+  config.add_view(avatar, route_name="avatar")
+
+  config.add_route('personal', '/personal')
+  config.add_view(personal, route_name='personal', renderer='json')
+
+  config.add_route('education', '/education')
+  config.add_view(education, route_name='education', renderer='json')
+
+  config.add_route('project', '/project')
+  config.add_view(project, route_name='project', renderer='json')
 
   config.add_static_view(name='/', path='./public', cache_max_age=3600)
 

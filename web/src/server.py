@@ -86,13 +86,13 @@ if __name__ == '__main__':
   config.add_route('get_home', '/')
   config.add_view(get_home, route_name='get_home')
 
-  config.add_out("welcome", "/welcome")
+  config.add_route("welcome", "/welcome")
   config.add_view(welcome, route_name="welcome")
 
-  config.add_out("cv", "/cv")
+  config.add_route("cv", "/cv")
   config.add_view(cv, route_name="cv")
 
-  config.add_out("avatar", "/avatar")
+  config.add_route("avatar", "/avatar")
   config.add_view(avatar, route_name="avatar")
 
   config.add_route('personal', '/personal')

@@ -95,6 +95,11 @@ def project(req):
       "teamID": 0
     }
 
+    teammates = ["link1", "link2", "link3"]
+
+    records.pop("teamID")
+    records["team"] = teammates
+
     return json.dumps(records, index=4)
 
 

@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  $( ".guestInfo form #submit" ).on( "click", function() {
+  $('form').submit( function () {
     console.log( "submit" );
     var valid = true;
     
@@ -7,9 +7,17 @@ $( document ).ready(function() {
       if(!$(this).val()){
         valid = false;
       }
-    })
+    });
 
     if(valid) {
+      var formdata = $(this).serialize();
+
+      $.ajax({
+          type: "POST",
+          url: "/add_user",
+          data: formdata
+       });
+
       $("#guests").find('tbody')
         .append($("<tr>")
                 .append($("<td>")
@@ -29,9 +37,9 @@ $( document ).ready(function() {
     else {
       alert('Some fields are empty!');
     }
-  });
 
-  $( ".guestInfo form #submit" ).mouseup(function() {
     $(this).closest('form').find("input[type=text]").val("");
-  });
+
+    return false;
+    }); 
 });

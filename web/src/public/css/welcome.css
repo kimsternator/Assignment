@@ -1,0 +1,60 @@
+body {
+  background: #292929;
+  color: #b98af6;
+}
+
+::placeholder {
+  color: #dcdcdc;
+}
+
+.guestInfo {
+  display: flex;
+  justify-content: center;
+}
+
+.guestBook {
+  margin-left: 30%;
+}
+
+.guestInfo input {
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  background: #8c8c8c;
+}
+
+.guestInfo #submit {
+  background: #8c8c8c;
+}
+
+.guestBook label {
+  font-weight:bold;
+  font-size: 3rem;
+}
+
+.guestBook #guests {
+  border: 2px solid black;
+  border-collapse: collapse;
+  font-size: 2rem;
+}
+
+th {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+td {
+  border: 2px solid black;
+  font-size: 2rem;
+  padding: 2px;
+}
+
+/* .guestBook #guests th {
+  border: 2px solid black;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.guestBook #guests tr {
+  border: 2px solid black;
+} */

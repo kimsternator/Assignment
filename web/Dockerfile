@@ -7,4 +7,5 @@ RUN pip install -r /tmp/requirements.txt
 WORKDIR /app
 
 EXPOSE 6000
+CMD python init_db.py
 CMD python server.py

@@ -3,7 +3,6 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./src/requirements.txt /tmp
 RUN pip install -r /tmp/requirements.txt
-RUN python ./init_db.py
 
 WORKDIR /app
 

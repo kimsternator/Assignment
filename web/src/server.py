@@ -1,6 +1,8 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.renderers import render_to_response
+from pyramid.response import Response
+import pyramid.httpexceptions as exc
 
 import mysql.connector as mysql
 import os
@@ -76,6 +78,24 @@ def project(req):
 
   return render_to_response('templates/coming_soon.html', {'users': records[0]}, request=req)
 
+#*****************************************************************
+
+def add_user(req):
+  req_fields = ["first_name", "last_name", "email", "comment"]
+  new_user = req.POST.mixed()
+
+  # if (sorted(req_fields) == sorted(list(new_user.keys()))):
+  #   db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  #   cursor = db.cursor()
+  #   cursor.execute("insert into Users (first_name, last_name, email, comment) values ("")
+  #
+  # else:
+  #   return exc.HTTPBadRequest()
+  print(new_user)
+  print(type(new_user))
+
+  return exc.HTTPCreated()
+
 ''' Route Configurations '''
 if __name__ == '__main__':
   config = Configurator()
@@ -88,6 +108,9 @@ if __name__ == '__main__':
 
   config.add_route("welcome", "/welcome")
   config.add_view(welcome, route_name="welcome")
+
+  config.add_route('add_user', '/add_user')
+  config.add_view(add_user, route_name='add_user', renderer='json', request_method='POST')
 
   config.add_route("cv", "/cv")
   config.add_view(cv, route_name="cv")

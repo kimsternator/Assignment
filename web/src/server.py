@@ -36,8 +36,10 @@ def cv(req):
 
 def avatar(req):
     avatar_response = {"image_src": "images/chiken.jpg"}
+    response = Response(body=json.dumps(avatar_response))
+    response.headers.update({'Access-Control-Allow-Origin': '*', })
 
-    return json.dumps(avatar_response, index=4)
+    return response
 
 
 def personal(req):
@@ -53,7 +55,11 @@ def personal(req):
         "email": "sskim@ucsd.edu"
     }
 
-    return json.dumps(records, index=4)
+    response = Response(body=json.dumps(records))
+    response.headers.update({'Access-Control-Allow-Origin': '*', })
+
+    return response
+
 
 
 def education(req):
@@ -70,8 +76,10 @@ def education(req):
       "major": "Electrical Engineering",
       "date": "March 2022"
     }
+    response = Response(body=json.dumps(records))
+    response.headers.update({'Access-Control-Allow-Origin': '*', })
 
-    return json.dumps(records, index=4)
+    return response
 
 
 def project(req):
@@ -94,13 +102,13 @@ def project(req):
       "Image_src": "tbd/static/images/ServiceUp.png",
       "teamID": 0
     }
-
     teammates = ["link1", "link2", "link3"]
-
     records.pop("teamID")
     records["team"] = teammates
+    response = Response(body=json.dumps(records))
+    response.headers.update({'Access-Control-Allow-Origin': '*', })
 
-    return json.dumps(records, index=4)
+    return response
 
 
 # *****************************Data Routes************************************
@@ -147,13 +155,13 @@ if __name__ == '__main__':
     config.add_view(avatar, route_name="avatar")
 
     config.add_route('personal', '/personal')
-    config.add_view(personal, route_name='personal', renderer='json', request_method='GET')
+    config.add_view(personal, route_name='personal', renderer='json')
 
     config.add_route('education', '/education')
-    config.add_view(education, route_name='education', renderer='json', request_method='GET')
+    config.add_view(education, route_name='education', renderer='json')
 
     config.add_route('project', '/project')
-    config.add_view(project, route_name='project', renderer='json', request_method='GET')
+    config.add_view(project, route_name='project', renderer='json')
 
     config.add_static_view(name='/', path='./public', cache_max_age=3600)
 

@@ -33,10 +33,75 @@ try:
 except:
   print("Users table already exists. Not recreating it.")
 
+try:
+  cursor.execute("""
+      CREATE TABLE Educations (
+        id          integer  AUTO_INCREMENT PRIMARY KEY,
+        school      varchar(50) NOT NULL,
+        degree      varchar(30) NOT NULL,
+        major       varchar(30) NOT NULL,
+        date        varchar(30) NOT NULL,
+        created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    """)
+except:
+  print("Educations table already exists. Not recreating it.")
+
+try:
+  cursor.execute("""
+      CREATE TABLE Projects (
+        id          integer  AUTO_INCREMENT PRIMARY KEY,
+        title       varchar(30) NOT NULL,
+        description varchar(100) NOT NULL,
+        link        varchar(50) NOT NULL,
+        Image_src   varchar(30) NOT NULL,
+        teamID      integer NOT NULL,
+        created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    """)
+except:
+  print("Projects table already exists. Not recreating it.")
+
+try:
+  cursor.execute("""
+      CREATE TABLE Teammates (
+        id          integer  AUTO_INCREMENT PRIMARY KEY,
+        url         varchar(30) NOT NULL,
+        teamID      integer NOT NULL,
+        created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    """)
+except:
+  print("Teammates table already exists. Not recreating it.")
+
 # Insert Records
 query = "insert into Users (first_name, last_name, email, comment) values (%s, %s, %s, %s)"
 values = [
   ('Stephen', 'Kim', 'sskim@ucsd.edu', 'This is my comment')
+]
+cursor.executemany(query, values)
+db.commit()
+
+query = "insert into Educations (school, degree, major, date) values (%s, %s, %s, %s)"
+values = [
+  ('University of California, San Diego', 'Bachelor', 'Electrical Engineering', 'March 2022')
+]
+cursor.executemany(query, values)
+db.commit()
+
+query = "insert into Projects (title, description, link, Image_src, teamID) values (%s, %s, %s, %i)"
+values = [
+  ('ServiceUp', 'Community Posting Board for services', 'tbd', "/images/ServiceUp.png", 0)
+]
+cursor.executemany(query, values)
+db.commit()
+
+query = "insert into Teammates (url, teamID) values (%s, %i)"
+values = [
+  ('tbd',  0),
+  ('tbd',  0),
+  ('tbd',  0),
+  ('tbd',  0)
 ]
 cursor.executemany(query, values)
 db.commit()

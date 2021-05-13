@@ -31,16 +31,46 @@ def cv(req):
   return render_to_response('templates/coming_soon.html', {}, request=req)
 
 def avatar(req):
-  return render_to_response('templates/coming_soon.html', {}, request=req)
+  avatar_response = {"image_src": "images/chiken.jpg"}
+  response = json.dump(avatar_response, index=4)
+
+  return response
 
 def personal(req):
-  return render_to_response('templates/coming_soon.html', {}, request=req)
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select first_name, last_name, email from Users where id=0")
+  records = cursor.fetchall()
+  db.commit()
+  db.close()
+
+  return records
 
 def education(req):
-  return render_to_response('templates/coming_soon.html', {}, request=req)
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select school, degree, major, date from Educations where id=0")
+  records = cursor.fetchall()
+  db.commit()
+  db.close()
+
+
+  return records
 
 def project(req):
-  return render_to_response('templates/coming_soon.html', {}, request=req)
+  db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+  cursor = db.cursor()
+  cursor.execute("select title, description, link, Image_src, teamID from Users where id=0")
+  records = cursor.fetchall()
+  db.commit()
+  cursor.execute("select url from Teammates where url={}".format(records["teamID"]))
+  teammates = cursor.fetchall()
+  db.commit()
+  db.close()
+
+  print(teammates)
+
+  return records
 
 #*****************************Data Routes************************************
 
@@ -83,13 +113,13 @@ if __name__ == '__main__':
   config.add_view(avatar, route_name="avatar")
 
   config.add_route('personal', '/personal')
-  config.add_view(personal, route_name='personal', renderer='json')
+  config.add_view(personal, route_name='personal', renderer='json', request_method='GET')
 
   config.add_route('education', '/education')
-  config.add_view(education, route_name='education', renderer='json')
+  config.add_view(education, route_name='education', renderer='json', request_method='GET')
 
   config.add_route('project', '/project')
-  config.add_view(project, route_name='project', renderer='json')
+  config.add_view(project, route_name='project', renderer='json', request_method='GET')
 
   config.add_static_view(name='/', path='./public', cache_max_age=3600)
 

@@ -91,7 +91,7 @@ def project(req):
       "title": "ServiceUp",
       "description": "Community Posting Board for services",
       "link": "tbd",
-      "Image_src": "/images/ServiceUp.png",
+      "Image_src": "tbd/static/images/ServiceUp.png",
       "teamID": 0
     }
 

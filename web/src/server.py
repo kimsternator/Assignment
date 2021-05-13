@@ -29,7 +29,7 @@ def welcome(req):
   records = cursor.fetchall()
   db.close()
 
-  return render_to_response('templates/coming_soon.html', {'users': records}, request=req)
+  return render_to_response('templates/welcome.html', {'users': records}, request=req)
 
 def cv(req):
   db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)

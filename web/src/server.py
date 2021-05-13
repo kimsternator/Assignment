@@ -42,23 +42,23 @@ def education(req):
 def project(req):
   return render_to_response('templates/coming_soon.html', {}, request=req)
 
-#*****************************************************************
+#*****************************Data Routes************************************
 
 def add_user(req):
   req_fields = ["first_name", "last_name", "email", "comment"]
   new_user = req.POST.mixed()
 
-  # if (sorted(req_fields) == sorted(list(new_user.keys()))):
-  #   db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
-  #   cursor = db.cursor()
-  #   cursor.execute("insert into Users (first_name, last_name, email, comment) values ("")
-  #
-  # else:
-  #   return exc.HTTPBadRequest()
-  print(new_user)
-  print(type(new_user))
+  if (sorted(req_fields) == sorted(list(new_user.keys()))):
+    db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+    values = ", ".join(new_user.values())
+    cursor = db.cursor()
+    cursor.execute("insert into Users (first_name, last_name, email, comment) values (\", \".join(new_user.values()))")
+    db.commit()
+    db.close()
 
-  return exc.HTTPCreated()
+    return exc.HTTPCreated()
+  else:
+    return exc.HTTPBadRequest()
 
 ''' Route Configurations '''
 if __name__ == '__main__':

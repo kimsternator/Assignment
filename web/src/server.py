@@ -52,7 +52,7 @@ def add_user(req):
     db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
     values = ", ".join(new_user.values())
     cursor = db.cursor()
-    cursor.execute("insert into Users (first_name, last_name, email, comment) values (\", \".join(new_user.values()))")
+    cursor.execute("insert into Users (first_name, last_name, email, comment) values (" + values + ")")
     db.commit()
     db.close()
 

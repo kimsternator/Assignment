@@ -7,7 +7,7 @@ $( document ).ready(function() {
       if(!$(this).val()){
         valid = false;
       }
-    });
+    })
 
     if(valid) {
       $("#guests").find('tbody')
@@ -29,7 +29,9 @@ $( document ).ready(function() {
     else {
       alert('Some fields are empty!');
     }
+  });
 
+  $( ".guestInfo form #submit" ).mouseup(function() {
     $(this).closest('form').find("input[type=text]").val("");
   });
 });

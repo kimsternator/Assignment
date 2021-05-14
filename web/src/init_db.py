@@ -4,6 +4,7 @@ import mysql.connector as mysql
 # Load the credentials from the secured .env file
 import os
 from dotenv import load_dotenv
+
 load_dotenv('credentials.env')
 
 db_user = os.environ['MYSQL_USER']
@@ -17,8 +18,10 @@ cursor = db.cursor()
 
 # # CAUTION!!! CAUTION!!! CAUTION!!! CAUTION!!! CAUTION!!! CAUTION!!! CAUTION!!!
 cursor.execute("drop table if exists Users;")
+# will comment out after initially creating db
 
 # Create a TStudents table (wrapping it in a try-except is good practice)
+print("Creating Users table")
 try:
   cursor.execute("""
     CREATE TABLE Users (
@@ -33,6 +36,7 @@ try:
 except:
   print("Users table already exists. Not recreating it.")
 
+print("Creating Educations table")
 try:
   cursor.execute("""
       CREATE TABLE Educations (
@@ -47,6 +51,7 @@ try:
 except:
   print("Educations table already exists. Not recreating it.")
 
+print("Creating Projects table")
 try:
   cursor.execute("""
       CREATE TABLE Projects (
@@ -62,6 +67,7 @@ try:
 except:
   print("Projects table already exists. Not recreating it.")
 
+print("Creating Teammates table")
 try:
   cursor.execute("""
       CREATE TABLE Teammates (
@@ -75,6 +81,7 @@ except:
   print("Teammates table already exists. Not recreating it.")
 
 # Insert Records
+print("inserting user")
 query = "insert into Users (first_name, last_name, email, comment) values (%s, %s, %s, %s)"
 values = [
   ('Stephen', 'Kim', 'sskim@ucsd.edu', 'This is my comment')
@@ -82,6 +89,7 @@ values = [
 cursor.executemany(query, values)
 db.commit()
 
+print("inserting education")
 query = "insert into Educations (school, degree, major, date) values (%s, %s, %s, %s)"
 values = [
   ('University of California, San Diego', 'Bachelor', 'Electrical Engineering', 'March 2022')
@@ -89,6 +97,7 @@ values = [
 cursor.executemany(query, values)
 db.commit()
 
+print("inserting Project")
 query = "insert into Projects (title, description, link, Image_src, teamID) values (%s, %s, %s, %i)"
 values = [
   ('ServiceUp', 'Community Posting Board for services', 'tbd', "/images/ServiceUp.png", 0)
@@ -96,9 +105,9 @@ values = [
 cursor.executemany(query, values)
 db.commit()
 
+print("inserting teammates")
 query = "insert into Teammates (url, teamID) values (%s, %i)"
 values = [
-  ('tbd',  0),
   ('tbd',  0),
   ('tbd',  0),
   ('tbd',  0)
@@ -109,5 +118,23 @@ db.commit()
 # Selecting Records
 cursor.execute("select * from Users;")
 print('---------- DATABASE INITIALIZED ----------')
+print("Users")
 [print(x) for x in cursor]
+db.commit()
+
+cursor.execute("select * from Educations;")
+print("Educations")
+[print(x) for x in cursor]
+db.commit()
+
+cursor.execute("select * from Projects;")
+print("Educations")
+[print(x) for x in cursor]
+db.commit()
+
+cursor.execute("select * from Teammates;")
+print("Educations")
+[print(x) for x in cursor]
+db.commit()
+
 db.close()

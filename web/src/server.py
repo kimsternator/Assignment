@@ -16,13 +16,6 @@ db_host = os.environ['MYSQL_HOST']
 
 
 def get_home(req):
-    # # Connect to the database and retrieve the users
-    # db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
-    # cursor = db.cursor()
-    # cursor.execute("select first_name, last_name, email from Users;")
-    # records = cursor.fetchall()
-    # db.close()
-
     return render_to_response('templates/coming_soon.html', {}, request=req)
 
 
@@ -43,18 +36,16 @@ def avatar(req):
 
 
 def personal(req):
-    # db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
-    # cursor = db.cursor()
-    # cursor.execute("select first_name, last_name, email from Users where id=0")
-    # records = cursor.fetchall()
-    # db.commit()
-    # db.close()
-    records = {
-        "first_name": "Stephen",
-        "last_name": "Kim",
-        "email": "sskim@ucsd.edu"
-    }
+    keys = ("first_name", "last_name", "email")
 
+    db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+    cursor = db.cursor()
+    cursor.execute("select first_name, last_name, email from Users where id=1")
+    records = cursor.fetchall()[0]
+    db.commit()
+    db.close()
+
+    records = dict(zip(keys, records))
     response = Response(body=json.dumps(records))
     response.headers.update({'Access-Control-Allow-Origin': '*', })
 
@@ -63,19 +54,16 @@ def personal(req):
 
 
 def education(req):
-    # db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
-    # cursor = db.cursor()
-    # cursor.execute("select school, degree, major, date from Educations where id=0")
-    # records = cursor.fetchall()
-    # db.commit()
-    # db.close()
+    keys = ("school", "degree", "major", "date")
 
-    records = {
-      "school": "University of California, San Diego",
-      "degree": "Bachelor",
-      "major": "Electrical Engineering",
-      "date": "March 2022"
-    }
+    db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+    cursor = db.cursor()
+    cursor.execute("select school, degree, major, date from Educations where id=1")
+    records = cursor.fetchall()[0]
+    db.commit()
+    db.close()
+
+    records = dict(zip(keys, records))
     response = Response(body=json.dumps(records))
     response.headers.update({'Access-Control-Allow-Origin': '*', })
 
@@ -83,17 +71,20 @@ def education(req):
 
 
 def project(req):
-    # db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
-    # cursor = db.cursor()
-    # cursor.execute("select title, description, link, Image_src, teamID from Users where id=0")
-    # records = cursor.fetchall()
-    # db.commit()
-    # cursor.execute("select url from Teammates where url={}".format(records["teamID"]))
-    # teammates = cursor.fetchall()
-    # db.commit()
-    # db.close()
-    #
-    # print(teammates)
+    keys = ["title", "description", "link", "Image_src", "team"]
+
+    db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+    cursor = db.cursor()
+    cursor.execute("select title, description, link, Image_src, teamID from Projects where id=1")
+    records = cursor.fetchall()[0]
+    db.commit()
+    cursor.execute("select url from Teammates where teamID={0}".format(records[4]))
+    teammates = cursor.fetchall()
+    db.commit()
+    db.close()
+
+    print(records)
+    print(teammates)
 
     records = {
       "title": "ServiceUp",
@@ -102,6 +93,7 @@ def project(req):
       "Image_src": "tbd/static/images/ServiceUp.png",
       "teamID": 0
     }
+
     teammates = ["link1", "link2", "link3"]
     records.pop("teamID")
     records["team"] = teammates
@@ -118,14 +110,14 @@ def add_user(req):
     new_user = req.POST.mixed()
 
     if (sorted(req_fields) == sorted(list(new_user.keys()))):
-        # db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
-        values = ", ".join(new_user.values())
-        # cursor = db.cursor()
-        # cursor.execute("insert into Users (first_name, last_name, email, comment) values (" + values + ")")
-        # db.close()
-        print()
-
-        print("insert into Users (first_name, last_name, email, comment) values (" + values + ")")
+        db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+        values = ", ".join([f'"{a}"' for a in new_user.values()])
+        cursor = db.cursor()
+        cursor.execute("insert into Users (first_name, last_name, email, comment) values (" + values + ")")
+        db.commit()
+        cursor.execute("select * from Users")
+        print(cursor.fetchall())
+        db.close()
 
         return exc.HTTPCreated()
     else:

@@ -20,9 +20,11 @@ services:
       ./credentials.env
     ports:
       - 3306:3306 # host : container
+    command: --init-file /init_db.sql
     volumes:
-      - ./db:/var/lib/mysql # persistent DB when container is stopped
+      - ./database/init_db.sql:/init_db.sql
+      - ./database/persistent_db:/var/lib/mysql # persistent DB when container is stopped
     container_name: agile-db
 
 volumes:
-  database:
+  persistent_db:

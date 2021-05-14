@@ -33,6 +33,8 @@ $( document ).ready(function() {
                         .text($("#comment").val())
                        )
                );
+
+        alert("Thank you for your entry");
     }
     else {
       alert('Some fields are empty!');

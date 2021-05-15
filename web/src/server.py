@@ -105,8 +105,6 @@ def add_user(req):
         cursor = db.cursor()
         cursor.execute("insert into Users (first_name, last_name, email, comment) values (" + values + ")")
         db.commit()
-        cursor.execute("select * from Users")
-        print(cursor.fetchall())
         db.close()
 
         return exc.HTTPCreated()
@@ -120,8 +118,6 @@ def get_users(req):
     records = cursor.fetchall()
     db.commit()
     db.close()
-
-    print(records)
 
     response = Response(body=json.dumps(records))
     response.headers.update({'Access-Control-Allow-Origin': '*', })

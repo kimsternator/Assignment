@@ -1,4 +1,30 @@
 $( document ).ready(function() {
+  $.getJSON("/get_users", function(data, status) {
+    if(status == "success") {
+      $.each(data, function(index, value) {
+        $("#guests").find('tbody')
+        .append($("<tr>")
+                .append($("<td>")
+                        .text(value[0])
+                       )
+                .append($("<td>")
+                        .text(value[1])
+                       )
+                .append($("<td>")
+                        .text(value[2])
+                       )
+                .append($("<td>")
+                        .text(value[3])
+                       )
+               );
+      });
+    }
+    else {
+      alert("There was a problem!");
+    }
+  });
+
+
   $('form').submit( function () {
     console.log( "submit" );
     var valid = true;
@@ -34,7 +60,7 @@ $( document ).ready(function() {
                        )
                );
 
-        alert("Thank you for your entry");
+      alert("Thank you for your entry");
     }
     else {
       alert('Some fields are empty!');

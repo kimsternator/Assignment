@@ -71,7 +71,7 @@ def education(req):
 
 
 def project(req):
-    keys = ["title", "description", "link", "Image_src", "team"]
+    keys = ["title", "description", "link", "Image_src", "teamID"]
 
     db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
     cursor = db.cursor()
@@ -83,18 +83,8 @@ def project(req):
     db.commit()
     db.close()
 
-    print(records)
-    print(teammates)
-
-    records = {
-      "title": "ServiceUp",
-      "description": "Community Posting Board for services",
-      "link": "tbd",
-      "Image_src": "tbd/static/images/ServiceUp.png",
-      "teamID": 0
-    }
-
-    teammates = ["link1", "link2", "link3"]
+    records = dict(zip(keys, records))
+    teammates = ["".join(tup) for tup in teammates]
     records.pop("teamID")
     records["team"] = teammates
     response = Response(body=json.dumps(records))
@@ -123,6 +113,20 @@ def add_user(req):
     else:
         return exc.HTTPBadRequest()
 
+def get_users(req):
+    db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+    cursor = db.cursor()
+    cursor.execute("select first_name, last_name, email, comment from Users where id!=1")
+    records = cursor.fetchall()
+    db.commit()
+    db.close()
+
+    print(records)
+
+    response = Response(body=json.dumps(records))
+    response.headers.update({'Access-Control-Allow-Origin': '*', })
+
+    return response
 
 ''' Route Configurations '''
 if __name__ == '__main__':
@@ -136,9 +140,6 @@ if __name__ == '__main__':
 
     config.add_route("welcome", "/welcome")
     config.add_view(welcome, route_name="welcome")
-
-    config.add_route('add_user', '/add_user')
-    config.add_view(add_user, route_name='add_user', renderer='json', request_method='POST')
 
     config.add_route("cv", "/cv")
     config.add_view(cv, route_name="cv")
@@ -154,6 +155,12 @@ if __name__ == '__main__':
 
     config.add_route('project', '/project')
     config.add_view(project, route_name='project', renderer='json')
+
+    config.add_route('add_user', '/add_user')
+    config.add_view(add_user, route_name='add_user', renderer='json', request_method='POST')
+
+    config.add_route('get_users', '/get_users')
+    config.add_view(get_users, route_name='get_users', renderer='json', request_method='GET')
 
     config.add_static_view(name='/', path='./public', cache_max_age=3600)
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>CV</title>
+
+        <meta name="author" content="Stephen Kim">
+        <meta name="description" content="ECE140B">
+
+        <link rel="stylesheet" type="text/css" href="css/cv.css">
+    </head>
+    <body>
+      <div class="background"></div>
+      <div class="center">
+        <h1 id="name">{{name}}</h1>
+        <div class="headerBreak"></div>
+        <p id="email">{{email}}</p>
+        <div class="row">
+          <div class="column">
+            <h2 id="education">Education</h2>
+            <p class="item" id="school">{{school}}</p>
+            <p class="item" id="major">{{major}}</p>
+            <p class="item" id="degree">{{degree}}</p>
+            <p class="item" id="date">{{date}}</p>
+          </div>
+          <div class="column">
+            <h2 id="project">Project</h2>
+            <img src="{{Image_src}}" />
+            <p class="item" id="title">{{title}}</p>
+            <p class="item" id="description">{{description}}</p>
+            <p class="item" id="link">{{link}}</p>
+            <p class="item">Teammates</p>
+            <ul>
+              <li id="one">{{team[0]}}</li>
+              <li id="two">{{team[1]}}</li>
+              <li id="three">{{team[2]}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script defer src="js/coming_soon.js"></script>
+    </body>
+</html>

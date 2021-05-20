@@ -30,14 +30,14 @@ CREATE TABLE IF NOT EXISTS Projects (
     title       varchar(30) NOT NULL,
     description varchar(100) NOT NULL,
     link        varchar(50) NOT NULL,
-    Image_src   varchar(30) NOT NULL,
+    Image_src   varchar(50) NOT NULL,
     teamID      integer NOT NULL,
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS Teammates (
     id          integer  AUTO_INCREMENT PRIMARY KEY,
-    url         varchar(30) NOT NULL,
+    url         varchar(60) NOT NULL,
     teamID      integer NOT NULL,
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -46,6 +46,6 @@ insert into Users (first_name, last_name, email, comment) values ("Stephen", "Ki
 
 insert into Educations (school, degree, major, date) values ("University of California, San Diego", "Bachelor", "Electrical Engineering", "March 2022");
 
-insert into Projects (title, description, link, Image_src, teamID) values ("ServiceUp", "Community Posting Board for services", "tbd", "/static/images/ServiceUp.png", 0);
+insert into Projects (title, description, link, Image_src, teamID) values ("ServiceUp", "Community Posting Board for services", "tbd", "tbd/static/images/ServiceUp.png", 0);
 
 insert into Teammates (url, teamID) values ("tbd",  0), ("tbd",  0), ("tbd",  0);

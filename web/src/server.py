@@ -1,4 +1,4 @@
-from wsgiref.simple_server import make_server
+# from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.request import Request
 from pyramid.renderers import render_to_response
@@ -7,7 +7,7 @@ import pyramid.httpexceptions as exc
 
 import mysql.connector as mysql
 import os
-
+import bjoern
 import json
 
 db_user = os.environ['MYSQL_USER']
@@ -23,6 +23,9 @@ def get_home(req):
 def welcome(req):
     return render_to_response('templates/welcome.html', {}, request=req)
 
+def about(req):
+    return render_to_response('templates/coming_soon.html', {}, request=req)
+
 def cv(req):
     subreq = Request.blank('/personal')
     personal = req.invoke_subrequest(subreq).json_body
@@ -35,7 +38,11 @@ def cv(req):
 
     records = {**{**personal, **education}, **project}
 
-    return render_to_response('templates/coming_soon.html', records, request=req)
+    records['name'] = str(records['first_name']) + " " + str(records['last_name'])
+    records.pop("first_name")
+    records.pop("last_name")
+
+    return render_to_response('templates/cv.html', records, request=req)
 
 
 def avatar(req):
@@ -148,6 +155,9 @@ if __name__ == '__main__':
     config.add_route("welcome", "/welcome")
     config.add_view(welcome, route_name="welcome")
 
+    config.add_route("about", "/about")
+    config.add_view(about, route_name="about")
+
     config.add_route("cv", "/cv")
     config.add_view(cv, route_name="cv")
 
@@ -172,5 +182,4 @@ if __name__ == '__main__':
     config.add_static_view(name='/', path='./public', cache_max_age=3600)
 
     app = config.make_wsgi_app()
-    server = make_server('0.0.0.0', 6000, app)
-    server.serve_forever()
+    bjoern.run(app, "0.0.0.0", 6000)

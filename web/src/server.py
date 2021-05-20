@@ -1,5 +1,6 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
+from pyramid.request import Request
 from pyramid.renderers import render_to_response
 from pyramid.response import Response
 import pyramid.httpexceptions as exc
@@ -22,9 +23,19 @@ def get_home(req):
 def welcome(req):
     return render_to_response('templates/welcome.html', {}, request=req)
 
-
 def cv(req):
-    return render_to_response('templates/coming_soon.html', {}, request=req)
+    subreq = Request.blank('/personal')
+    personal = req.invoke_subrequest(subreq).json_body
+
+    subreq = Request.blank('/education')
+    education = req.invoke_subrequest(subreq).json_body
+
+    subreq = Request.blank('/project')
+    project = req.invoke_subrequest(subreq).json_body
+
+    records = {**{**personal, **education}, **project}
+
+    return render_to_response('templates/coming_soon.html', records, request=req)
 
 
 def avatar(req):
@@ -141,7 +152,7 @@ if __name__ == '__main__':
     config.add_view(cv, route_name="cv")
 
     config.add_route("avatar", "/avatar")
-    config.add_view(avatar, route_name="avatar")
+    config.add_view(avatar, route_name="avatar", renderer='json')
 
     config.add_route('personal', '/personal')
     config.add_view(personal, route_name='personal', renderer='json')

@@ -23,8 +23,10 @@ def get_home(req):
 def welcome(req):
     return render_to_response('templates/welcome.html', {}, request=req)
 
+
 def about(req):
     return render_to_response('templates/coming_soon.html', {}, request=req)
+
 
 def cv(req):
     subreq = Request.blank('/personal')
@@ -68,7 +70,6 @@ def personal(req):
     response.headers.update({'Access-Control-Allow-Origin': '*', })
 
     return response
-
 
 
 def education(req):
@@ -128,6 +129,7 @@ def add_user(req):
         return exc.HTTPCreated()
     else:
         return exc.HTTPBadRequest()
+
 
 def get_users(req):
     db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)

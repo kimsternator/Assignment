@@ -48,4 +48,4 @@ insert into Educations (school, degree, major, date) values ("University of Cali
 
 insert into Projects (title, description, link, Image_src, teamID) values ("ServiceUp", "Community Posting Board for services", "tbd", "tbd/static/images/ServiceUp.png", 0);
 
-insert into Teammates (url, teamID) values ("tbd",  0), ("tbd",  0), ("tbd",  0);
+insert into Teammates (url, teamID) values ("http://143.198.73.78/",  0), ("http://165.232.153.255/",  0), ("tbd",  0);

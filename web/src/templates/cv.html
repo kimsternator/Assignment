@@ -14,34 +14,53 @@
     <body>
       <div class="background"></div>
       <div class="center">
+        <div id="sidebar" class="sideBar">
+          <div id="toggleButton" class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>  
+          <div class="list">
+            <div class="item head">Pages</div>
+            <div id="home" class="item link">Home</div>
+            <div id="welcome" class="item link">Welcome</div>
+            <div id="about" class="item link">About</div>
+            <div id="cv" class="item link">CV</div>
+            <div class="item head">Data Routes</div>
+            <div id="avatar" class="item link">Avatar</div>
+            <div id="personal" class="item link">personal</div>
+            <div id="education" class="item link">education</div>
+            <div id="project" class="item link">project</div>
+          </div>
+        </div>
         <h1 id="name">{{name}}</h1>
         <div class="headerBreak"></div>
         <p id="email">{{email}}</p>
         <div class="row">
           <div class="column">
-            <h2 id="education">Education</h2>
+            <h2>Education</h2>
             <p class="item" id="school">{{school}}</p>
             <p class="item" id="major">{{major}}</p>
             <p class="item" id="degree">{{degree}}</p>
             <p class="item" id="date">{{date}}</p>
           </div>
           <div class="column">
-            <h2 id="project">Project</h2>
+            <h2>Project</h2>
             <img src="{{Image_src}}" />
             <p class="item" id="title">{{title}}</p>
             <p class="item" id="description">{{description}}</p>
             <p class="item" id="link">{{link}}</p>
             <p class="item">Teammates</p>
             <ul>
-              <li id="one">{{team[0]}}</li>
-              <li id="two">{{team[1]}}</li>
-              <li id="three">{{team[2]}}</li>
+              <li class="teamLink" id="one">{{team[0]}}</li>
+              <li class="teamLink" id="two">{{team[1]}}</li>
+              <li class="teamLink" id="three">{{team[2]}}</li>
             </ul>
           </div>
         </div>
       </div>
 
       <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script defer src="js/coming_soon.js"></script>
+      <script defer src="js/cv.js"></script>
     </body>
 </html>

@@ -17,7 +17,7 @@ db_host = os.environ['MYSQL_HOST']
 
 
 def get_home(req):
-    return render_to_response('templates/coming_soon.html', {}, request=req)
+    return render_to_response('templates/landing.html', {}, request=req)
 
 
 def welcome(req):

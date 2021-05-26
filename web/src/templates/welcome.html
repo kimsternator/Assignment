@@ -12,29 +12,48 @@
         <link rel="stylesheet" type="text/css" href="css/welcome.css">
     </head>
     <body>
-        <div class="guestInfo">
-          <form>
-            <input type="text" id="fname" name="first_name" placeholder="First Name">
-            <input type="text" id="lname" name="last_name" placeholder="Last Name">
-            <input type="text" id="email" name="email" placeholder="Email">
-            <input type="text" id="comment" name="comment" placeholder="Comment">
-            <input type="submit" value="Submit" id="submit">
-          </form>
+      <div id="sidebar" class="sideBar">
+        <div id="toggleButton" class="toggle-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>  
+        <div class="list">
+          <div class="item head">Pages</div>
+          <div id="home" class="item link">Home</div>
+          <div id="welcome" class="item link">Welcome</div>
+          <div id="about" class="item link">About</div>
+          <div id="cv" class="item link">CV</div>
+          <div class="item head">Data Routes</div>
+          <div id="avatar" class="item link">Avatar</div>
+          <div id="personal" class="item link">personal</div>
+          <div id="education" class="item link">education</div>
+          <div id="project" class="item link">project</div>
         </div>
+      </div>
+      <div class="guestInfo">
+        <form>
+          <input type="text" id="fname" name="first_name" placeholder="First Name">
+          <input type="text" id="lname" name="last_name" placeholder="Last Name">
+          <input type="text" id="email" name="email" placeholder="Email">
+          <input type="text" id="comment" name="comment" placeholder="Comment">
+          <input type="submit" value="Submit" id="submit">
+        </form>
+      </div>
 
-        <div class="guestBook">
-          <label>Guest Book</label>
-          <table id="guests">
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Comment</th>
-            </tr>
-          </table>
-        </div>
+      <div class="guestBook">
+        <label>Guest Book</label>
+        <table id="guests">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Comment</th>
+          </tr>
+        </table>
+      </div>
 
-        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script defer src="js/welcome.js"></script>
+      <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script defer src="js/welcome.js"></script>
     </body>
 </html>

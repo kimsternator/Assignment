@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  var theDate = new Date(2021, 4, 24);
+  var theDate = new Date(2021, 4, 31);
   var day = 86400;
   var hour = 3600;
   var minute = 60;

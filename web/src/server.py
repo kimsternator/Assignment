@@ -144,6 +144,22 @@ def get_users(req):
 
     return response
 
+
+def get_class(req):
+    db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
+    cursor = db.cursor()
+    cursor.execute("select url from Class")
+    records = cursor.fetchall()
+    records = {"urls": records}
+    db.commit()
+    db.close()
+
+    response = Response(body=json.dumps(records))
+    response.headers.update({'Access-Control-Allow-Origin': '*', })
+
+    return response
+
+
 ''' Route Configurations '''
 if __name__ == '__main__':
     config = Configurator()
@@ -180,6 +196,9 @@ if __name__ == '__main__':
 
     config.add_route('get_users', '/get_users')
     config.add_view(get_users, route_name='get_users', renderer='json', request_method='GET')
+
+    config.add_route('get_class', '/get_class')
+    config.add_view(get_class, route_name='get_class', renderer='json', request_method='GET')
 
     config.add_static_view(name='/', path='./public', cache_max_age=3600)
 

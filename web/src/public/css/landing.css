@@ -232,6 +232,11 @@ iframe {
   transform: rotateY(-25deg);
   transform-origin: left;
   box-shadow: 4px 4px 12px rgb(100,100,100);
+  cursor: pointer;
+}
+
+.panel:hover {
+  cursor: pointer;
 }
 
 .panel.open {

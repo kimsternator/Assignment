@@ -19,6 +19,7 @@ $(document).ready(function() {
                                   .addClass("box")
                                   .append($("<iframe>")
                                     .attr("src", data["urls"][i])
+                                    .attr("loading", "lazy")
                                     .attr("scrolling", "no")
                                     .addClass("display")))))
                           .append($("<div>")
@@ -32,6 +33,7 @@ $(document).ready(function() {
                                   .addClass("box")
                                   .append($("<iframe>")
                                     .attr("src", data["urls"][i + 1])
+                                    .attr("loading", "lazy")
                                     .attr("scrolling", "no")
                                     .addClass("display"))))));
         }
@@ -51,6 +53,7 @@ $(document).ready(function() {
                                   .addClass("box")
                                   .append($("<iframe>")
                                     .attr("src", data["urls"][len - 1])
+                                    .attr("loading", "lazy")
                                     .attr("scrolling", "no")
                                     .addClass("display")))))
                           .append($("<div>")

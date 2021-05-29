@@ -25,7 +25,7 @@ def welcome(req):
 
 
 def about(req):
-    return render_to_response('templates/coming_soon.html', {}, request=req)
+    return render_to_response('templates/about.html', {}, request=req)
 
 
 def cv(req):

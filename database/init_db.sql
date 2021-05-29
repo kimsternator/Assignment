@@ -51,7 +51,7 @@ CREATE Table IF NOT EXISTS Class (
 
 insert into Users (first_name, last_name, email, comment) values ("Stephen", "Kim", "sskim@ucsd.edu", "This is my comment");
 
-insert into Educations (school, degree, major, date) values ("University of California, San Diego", "Bachelor", "Electrical Engineering", "March 2022");
+insert into Educations (school, degree, major, date) values ("University of California, San Diego", "Bachelor's Degree", "Electrical Engineering", "March 2022");
 
 insert into Projects (title, description, link, Image_src, teamID) values ("ServiceUp", "Community Posting Board for services", "tbd", "tbd/static/images/ServiceUp.png", 0);
 

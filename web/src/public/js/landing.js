@@ -99,7 +99,6 @@ $(document).ready(function() {
 
   load_class();
 
-
   $("#toggleButton").on("click", function() {
     document.getElementById("sidebar").classList.toggle('active');
   });

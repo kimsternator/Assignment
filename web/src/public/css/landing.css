@@ -162,6 +162,7 @@ p:hover + .box,.box:hover {
 
 iframe {
   overflow: hidden;
+  loading="lazy"
 }
 
 .flip-panel {

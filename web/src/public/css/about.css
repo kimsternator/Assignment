@@ -1,11 +1,7 @@
 body {
-  background: #292929;
+  background-color: #292929;
   color: #b98af6;
   font-family: Apple Chancery, cursive;
-}
-
-::placeholder {
-  color: #dcdcdc;
 }
 
 .header {
@@ -26,11 +22,11 @@ body {
   margin: auto;
 }
 
-#name {
+#about {
   font-size: 3vw;
 }
 
-#name:hover {
+#about:hover {
   cursor: pointer;
 }
 
@@ -39,48 +35,6 @@ body {
   margin: auto;
   border-bottom: 5px solid #b98af6;
   margin-bottom: 2rem;
-}
-
-.guestInfo {
-  display: flex;
-  justify-content: center;
-}
-
-.guestBook {
-  margin-left: 30%;
-}
-
-.guestInfo input {
-  display: block;
-  padding: 5px;
-  margin: 5px;
-  background: #8c8c8c;
-}
-
-.guestInfo #submit {
-  background: #8c8c8c;
-}
-
-.guestBook label {
-  font-weight:bold;
-  font-size: 3rem;
-}
-
-.guestBook #guests {
-  border: 2px solid black;
-  border-collapse: collapse;
-  font-size: 2rem;
-}
-
-th {
-  border: 2px solid black;
-  padding: 5px;
-}
-
-td {
-  border: 2px solid black;
-  font-size: 2rem;
-  padding: 2px;
 }
 
 .sideBar {
@@ -134,12 +88,61 @@ td {
   color: #5326e1;
 }
 
-/* .guestBook #guests th {
-  border: 2px solid black;
-  margin-right: 0px;
-  margin-left: 0px;
+.row {
+  width: 80%;
+  margin: auto;
+  padding: 2px;
 }
 
-.guestBook #guests tr {
-  border: 2px solid black;
-} */
+.column {
+  padding: 0px;
+  text-align: center;
+  float: left;
+  width: 20%;
+  height: 10vw;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.row:after {
+  display: table;
+  clear: both;
+}
+
+h2 {
+  font-size: 2vw;
+  text-align: left;
+  margin-left: 10%;
+}
+
+.content .headerBreak {
+  margin-left: 10%;
+  width: 10%;
+}
+
+.content .row .headerBreak {
+  margin-left: 0%;
+  width: 17%;
+}
+
+.content .row h2 {
+  margin-left: 0%;
+}
+
+.content p {
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 1vw;
+  text-align: left;
+}
+
+.content .row .column p {
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+@media only screen and (max-width: 1100px) {
+  .column {
+    width: 45%;
+  }
+}

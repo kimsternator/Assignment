@@ -75,6 +75,10 @@ $( document ).ready(function() {
     return false;
   }); 
 
+  $("#name").on("click", function() {
+    window.location = "/";
+  });
+
   $("#home").on("click", function() {
     window.location = "/";
   });

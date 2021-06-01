@@ -53,7 +53,7 @@ insert into Users (first_name, last_name, email, comment) values ("Stephen", "Ki
 
 insert into Educations (school, degree, major, date) values ("University of California, San Diego", "Bachelor's Degree", "Electrical Engineering", "March 2022");
 
-insert into Projects (title, description, link, Image_src, teamID) values ("ServiceUp", "Community Posting Board for services", "http://serviceup.tech/", "http://serviceup.tech/static/images/ServiceUp.png", 0);
+insert into Projects (title, description, link, Image_src, teamID) values ("ServiceUp", "Community Posting Board for services", "http://serviceup.tech/", "http://serviceup.tech/static/images/serviceUp.png", 0);
 
 insert into Teammates (url, teamID) values ("http://143.198.73.78/",  0), ("http://165.232.153.255/",  0), ("tbd",  0);
 

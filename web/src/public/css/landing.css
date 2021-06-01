@@ -142,27 +142,12 @@ p {
   width: 100%;
   text-align: center;
   margin: auto;
+  margin-top: 10%;
 }
 
-p:hover {
+p.classLink:hover {
   color: white;
   cursor: pointer;
-}
-
-.box {
-  display: none;
-  width: 100%;
-}
-
-p:hover + .box,.box:hover {
-  display: block;
-  position: relative;
-  z-index: 100;
-}
-
-iframe {
-  overflow: hidden;
-  loading="lazy"
 }
 
 .flip-panel {
@@ -262,7 +247,7 @@ iframe {
 
 .content {
   text-align: center;
-  margin-top: 20%;
+  margin-top: 30%;
   font-family: Apple Chancery, cursive;
   font-size: 1vw;
 }
@@ -270,4 +255,14 @@ iframe {
 #titlePage {
   margin-top: 35%;
   font-size: 1.7vw;
+}
+
+.statement {
+  width: 80%;
+  margin: auto;
+}
+
+.welcomeStatement {
+  color: #b98af6;
+  font-size: 1.5vw;
 }

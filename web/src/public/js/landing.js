@@ -13,29 +13,21 @@ $(document).ready(function() {
                             .append($("<div>")
                               .addClass("content")
                               .append($("<p>")
+                                .addClass("classmate")
+                                .html(data["classmates"][i]))
+                              .append($("<p>")
                                 .addClass("classLink")
-                                .html(data["urls"][i]))
-                                .append($("<div>")
-                                  .addClass("box")
-                                  .append($("<iframe>")
-                                    .attr("src", data["urls"][i])
-                                    .attr("loading", "lazy")
-                                    .attr("scrolling", "no")
-                                    .addClass("display")))))
+                                .html(data["urls"][i]))))
                           .append($("<div>")
                             .addClass("back")
                             .append($("<div>")
                               .addClass("content")
                               .append($("<p>")
+                                .addClass("classmate")
+                                .html(data["classmates"][i + 1]))
+                              .append($("<p>")
                                 .addClass("classLink")
-                                .html(data["urls"][i + 1]))
-                                .append($("<div>")
-                                  .addClass("box")
-                                  .append($("<iframe>")
-                                    .attr("src", data["urls"][i + 1])
-                                    .attr("loading", "lazy")
-                                    .attr("scrolling", "no")
-                                    .addClass("display"))))));
+                                .html(data["urls"][i + 1])))));
         }
 
         if(len % 2 != 0) {
@@ -48,19 +40,15 @@ $(document).ready(function() {
                               .addClass("content")
                               .append($("<p>")
                                 .addClass("classLink")
+                                .html(data["classmates"][len - 1]))
+                              .append($("<p>")
+                                .addClass("classLink")
                                 .html(data["urls"][len - 1]))
-                                .append($("<div>")
-                                  .addClass("box")
-                                  .append($("<iframe>")
-                                    .attr("src", data["urls"][len - 1])
-                                    .attr("loading", "lazy")
-                                    .attr("scrolling", "no")
-                                    .addClass("display")))))
                           .append($("<div>")
                             .addClass("back")
                             .append($("<div>")
                               .addClass("content")
-                                    .addClass("display"))));
+                                    .addClass("display"))))));
         }
       }
       else {
@@ -89,7 +77,6 @@ $(document).ready(function() {
       // when clicking the front panel add class 'open' to panel
       // if clicking bacl panel, remove 'open' from panel
       $('#flipBook .panel').on('click', '.front, .back', function() {
-        console.log(this);
         $(this).parent('.panel').toggleClass('open');
         checkZ($(this).parent('.panel'));
       });
@@ -140,6 +127,9 @@ $(document).ready(function() {
 
   $("#flipBook").on("click", ".classLink", function() {
     var $url = $(this).html();
-    window.location.href = $url;
+
+    if($url != "tbd"){
+      window.location.href = $url;
+    }
   });
 });

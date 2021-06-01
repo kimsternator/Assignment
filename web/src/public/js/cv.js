@@ -3,6 +3,11 @@ $( document ).ready(function() {
 		document.getElementById("sidebar").classList.toggle('active');
 	});
 
+	$("#name").on("click", function() {
+		window.location = "/";
+	});
+
+
 	$("#one").on("click", function() {
 		var $url = $('#one').html();
 		window.location = $url;

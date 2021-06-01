@@ -148,9 +148,10 @@ def get_users(req):
 def get_class(req):
     db = mysql.connect(host=db_host, database=db_name, user=db_user, passwd=db_pass)
     cursor = db.cursor()
-    cursor.execute("select url from Class")
+    cursor.execute("select classmate, url from Class")
     records = cursor.fetchall()
-    records = {"urls": records}
+    records = list(zip(*records))
+    records = {"classmates": records[0], "urls": records[1]}
     db.commit()
     db.close()
 

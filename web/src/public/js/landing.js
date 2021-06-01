@@ -68,7 +68,6 @@ $(document).ready(function() {
       }
 
       var numPanels = $('.panel').length;
-      console.log(numPanels);
       // loop through all panels and reverse sort via zIdx
       for (i=0; i<(numPanels); i++  ) {
         var zIdx =  numPanels-i;

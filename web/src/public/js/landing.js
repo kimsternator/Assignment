@@ -90,7 +90,12 @@ $(document).ready(function() {
   });
   
   $("#name").on("click", function() {
-    window.location = "/";
+    if($("#sidebar").hasClass("active")) {
+      console.log("responsivness measure");
+    }
+    else {
+      window.location = "/";
+    }
   });
   
   $("#home").on("click", function() {

@@ -76,7 +76,12 @@ $( document ).ready(function() {
   }); 
 
   $("#name").on("click", function() {
-    window.location = "/";
+    if($("#sidebar").hasClass("active")) {
+      console.log("Already active");
+    }
+    else {
+      window.location = "/";
+    }
   });
 
   $("#home").on("click", function() {

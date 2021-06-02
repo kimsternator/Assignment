@@ -63,13 +63,13 @@ body {
 
 .guestBook label {
   font-weight:bold;
-  font-size: 3rem;
+  font-size: 3vw;
 }
 
 .guestBook #guests {
   border: 2px solid black;
   border-collapse: collapse;
-  font-size: 2rem;
+  font-size: 2vw;
 }
 
 th {
@@ -79,7 +79,7 @@ th {
 
 td {
   border: 2px solid black;
-  font-size: 2rem;
+  font-size: 2vw;
   padding: 2px;
 }
 
@@ -143,3 +143,129 @@ td {
 .guestBook #guests tr {
   border: 2px solid black;
 } */
+
+/*  Mobile */
+@media only screen and (max-width: 800px) {
+  #name {
+    font-size: 7vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 7vw;
+    height: 1.5vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 7vw;
+    height: 7vw;
+  }
+
+  #sidebar {
+    left: -40%;
+  }
+  
+  .content {
+    font-size: 4vw;
+  }
+
+  .guestBook {
+    margin-left: 10%;
+  }
+
+  .guestInfo input {
+    height: 6vw;
+  }
+
+  .guestInfo #submit {
+    height: 10vw;
+    width: 100%;
+  }
+
+  .guestBook label {
+    font-size: 8vw;
+  }
+
+  .guestBook #guests {
+    font-size: 4vw;
+  }
+}
+
+/* Tablets */
+@media only screen and (max-width: 1000px) {
+  #name {
+    font-size: 7vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 6vw;
+    height: 1.25vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 4.5vw;
+    height: 6vw;
+    padding: 2vw;
+  }
+  
+  #sidebar {
+    left: -40%;
+    width: 40%;
+    z-index: 1;
+  }
+  
+  #sidebar.active {
+    left: 0%;
+  }
+  
+  .content {
+    font-size: 3vw;
+  } 
+
+  .guestBook {
+    margin-left: 10%;
+  }
+
+  .guestInfo input {
+    height: 4vw;
+  }
+
+  .guestInfo #submit {
+    height: 6vw;
+    width: 100%;
+  }
+}
+
+/* Smaller than desktop */
+@media only screen and (min-width: 1001px) and (max-width: 1300px) {
+  #name {
+    font-size: 5vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 5vw;
+    height: 1vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 2.5vw;
+    height: 3vw;
+  }
+  
+  #sidebar {
+    left: -20%;
+    width: 20%;
+    z-index: 1;
+  }
+  
+  .content {
+    font-size: 2.5vw;
+  } 
+
+  .guestInfo input {
+    height: 2vw;
+  }
+
+  .guestInfo #submit {
+    height: 3vw;
+  }
+}

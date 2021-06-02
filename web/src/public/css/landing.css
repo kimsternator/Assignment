@@ -20,7 +20,7 @@ body {
 
 .headerName {
   text-align: center;
-  width: 20%;
+  width: 80%;
   margin: auto;
 }
 
@@ -50,7 +50,7 @@ body {
   top: 0px;
   left: -10%;
   width: 10%;
-  height: 100%;
+  height: 300%;
   background: #151719;
   transition: all 300ms linear;
 }
@@ -107,19 +107,7 @@ body {
   padding: 0px;
   text-align: center;
   float: left;
-  width: 33%;
-}
-
-@media only screen and (max-width: 1200px) {
-  .column {
-    width: 45%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .column {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 .row:after {
@@ -265,4 +253,139 @@ p.classLink:hover {
 .welcomeStatement {
   color: #b98af6;
   font-size: 1.5vw;
+}
+
+/*  Mobile */
+@media only screen and (max-width: 600px) {
+  #name {
+    font-size: 7vw;
+  }
+  
+  .welcomeStatement {
+    font-size: 4vw;
+  }
+  
+  .flip-panel {
+    width: 50vw;
+    height: 50vw;
+    margin: 20px auto;
+  }
+  
+  #titlePage {
+    font-size: 4vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 7vw;
+    height: 1.5vw;
+  }
+  
+  .topRight {
+    font-size: 2vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 7vw;
+    height: 7vw;
+  }
+
+  #sidebar {
+    left: -40%;
+  }
+  
+  .content {
+    font-size: 4vw;
+  }
+}
+
+/* Tablets */
+@media only screen and (max-width: 1000px) {
+  #name {
+    font-size: 7vw;
+  }
+  
+  .welcomeStatement {
+    font-size: 3vw;
+  }
+  
+  .flip-panel {
+    width: 40vw;
+    height: 40vw;
+  }
+  
+  #titlePage {
+    font-size: 3.5vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 6vw;
+    height: 1.25vw;
+  }
+  
+  .topRight {
+    font-size: 2vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 4.5vw;
+    height: 6vw;
+  }
+  
+  #sidebar {
+    left: -40%;
+    width: 40%;
+    z-index: 1;
+  }
+  
+  #sidebar.active {
+    left: 0%;
+  }
+  
+  .content {
+    font-size: 3vw;
+  } 
+}
+
+/* Smaller than desktop */
+@media only screen and (min-width: 1001px) and (max-width: 1300px) {
+  #name {
+    font-size: 5vw;
+  }
+  
+  .welcomeStatement {
+    font-size: 2.5vw;
+  }
+  
+  .flip-panel {
+    width: 35vw;
+    height: 35vw;
+  }
+  
+  #titlePage {
+    font-size: 3.5vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 5vw;
+    height: 1vw;
+  }
+  
+  .topRight {
+    font-size: 1.5vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 2.5vw;
+    height: 3vw;
+  }
+  
+  #sidebar {
+    left: -20%;
+    width: 20%;
+    z-index: 1;
+  }
+  
+  .content {
+    font-size: 2.5vw;
+  } 
 }

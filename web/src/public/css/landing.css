@@ -256,7 +256,7 @@ p.classLink:hover {
 }
 
 /*  Mobile */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   #name {
     font-size: 7vw;
   }
@@ -329,6 +329,7 @@ p.classLink:hover {
   #sidebar div.list div.item {
     font-size: 4.5vw;
     height: 6vw;
+    padding: 2vw;
   }
   
   #sidebar {

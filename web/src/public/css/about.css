@@ -48,7 +48,7 @@ body {
   top: 0px;
   left: -10%;
   width: 10%;
-  height: 100%;
+  height: 300%;
   background: #151719;
   transition: all 300ms linear;
 }
@@ -109,44 +109,225 @@ body {
   clear: both;
 }
 
+.columnHeader {
+  width: 100%;
+}
+
 h2 {
   font-size: 2vw;
   text-align: left;
   margin-left: 10%;
 }
 
-.content .headerBreak {
+.contentAbout .headerBreak {
   margin-left: 10%;
   width: 10%;
 }
 
-.content .row .headerBreak {
+.contentAbout .row .column .headerBreak {
   margin-left: 0%;
   width: 17%;
 }
 
-.content .row h2 {
+.contentAbout .row h2 {
   margin-left: 0%;
 }
 
-.content p {
+.contentAbout p {
   margin-left: 10%;
   margin-right: 10%;
   font-size: 1vw;
   text-align: left;
 }
 
-.content .row .column p {
+.contentAbout .row .column p {
   margin-left: 0%;
   margin-right: 0%;
 }
 
-@media only screen and (max-width: 1100px) {
+.wireframe {
+  width: 80%;
+}
+
+/*  Mobile */
+@media only screen and (max-width: 800px) {
+  #name {
+    font-size: 7vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 7vw;
+    height: 1.5vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 7vw;
+    height: 7vw;
+  }
+
+  #sidebar {
+    left: -40%;
+  }
+  
+  .content {
+    font-size: 4vw;
+  }
+
   .column {
+    width: 100%;
+  }
+
+  #about {
+    font-size: 7vw;
+  }
+
+  h2 {
+    font-size: 5vw;
+  }
+
+  .contentAbout .headerBreak {
+    margin-left: 10%;
+    width: 25%;
+  }
+
+  .contentAbout .row .headerBreak {
     width: 45%;
+  }
+
+  .contentAbout p {
+    font-size: 6vw;
+  }
+
+  .wireframe {
+    width: 100%;
   }
 }
 
-.wireframe {
-  width: 80%;
+/* Tablets */
+@media only screen and (max-width: 1000px) {
+  #name {
+    font-size: 7vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 6vw;
+    height: 1.25vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 4.5vw;
+    height: 6vw;
+    padding: 2vw;
+  }
+  
+  #sidebar {
+    left: -40%;
+    width: 40%;
+    z-index: 1;
+  }
+  
+  #sidebar.active {
+    left: 0%;
+  }
+  
+  .content {
+    font-size: 3vw;
+  } 
+
+  .column {
+    width: 40%;
+    height: 20vw;
+    border: 1px solid blue;
+  }
+
+  #about {
+    font-size: 7vw;
+  }
+
+  h2 {
+    font-size: 4vw;
+  }
+
+  .contentAbout .row .column .headerBreak {
+    width: 85%;
+  }
+
+  .wireframe {
+    width: 100%;
+  }
+
+  .columnHeader {
+    width: 100%;
+  }
+
+  .contentAbout p {
+    font-size: 2vw;
+  }
+
+  .contentAbout .headerBreak {
+    width: 20%;
+  }
+}
+
+/* Smaller than desktop */
+@media only screen and (min-width: 1001px) and (max-width: 1300px) {
+  #name {
+    font-size: 5vw;
+  }
+  
+  #sidebar .toggle-btn span {
+    width: 5vw;
+    height: 1vw;
+  }
+  
+  #sidebar div.list div.item {
+    font-size: 2.5vw;
+    height: 3vw;
+  }
+  
+  #sidebar {
+    left: -20%;
+    width: 20%;
+    z-index: 1;
+    height:  500%;
+  }
+  
+  .content {
+    font-size: 2.5vw;
+  } 
+
+  .column {
+    width: 40%;
+    height: 20vw;
+    border: 1px solid blue;
+  }
+
+  #about {
+    font-size: 7vw;
+  }
+
+  h2 {
+    font-size: 4vw;
+    display:  block;
+  }
+
+  .contentAbout .headerBreak {
+    width: 20%;
+  }
+
+  .contentAbout .row .column .headerBreak {
+    width: 85%;
+  }
+
+  .wireframe {
+    width: 100%;
+  }
+
+  .columnHeader {
+    width: 100%;
+  }
+
+  .contentAbout p {
+    font-size: 2vw;
+  }
 }

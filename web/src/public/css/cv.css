@@ -166,6 +166,10 @@ li {
     font-size: 4vw;
   }
 
+  .column {
+    width: 100%;
+  }
+
   .guestBook {
     margin-left: 10%;
   }
@@ -218,6 +222,10 @@ li {
   .content {
     font-size: 3vw;
   } 
+
+  .column {
+    width: 100%;
+  }
 
   .guestBook {
     margin-left: 10%;

@@ -4,9 +4,13 @@ $( document ).ready(function() {
 	});
 
 	$("#name").on("click", function() {
-		window.location = "/";
+		if($("#sidebar").hasClass("active")) {
+	      console.log("responsivness measure");
+	    }
+	    else {
+	      window.location = "/";
+	    }
 	});
-
 
 	$("#one").on("click", function() {
 		var $url = $('#one').html();

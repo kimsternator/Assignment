@@ -22,11 +22,11 @@ body {
   margin: auto;
 }
 
-#about {
+#aboutHeader {
   font-size: 3vw;
 }
 
-#about:hover {
+#aboutHeader:hover {
   cursor: pointer;
 }
 

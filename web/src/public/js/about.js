@@ -7,8 +7,13 @@ $(document).ready(function() {
     document.getElementById("sidebar").classList.toggle('active');
   });
 
-  $("#name").on("click", function() {
-    window.location = "/";
+  $("#aboutHeader").on("click", function() {
+    if($("#sidebar").hasClass("active")) {
+      console.log("responsivness measure");
+    }
+    else {
+      window.location = "/";
+    }
   });
   
   $("#home").on("click", function() {

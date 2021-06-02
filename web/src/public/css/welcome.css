@@ -235,11 +235,11 @@ td {
   }
 
   .guestBook label {
-    font-size: 8vw;
+    font-size: 6vw;
   }
 
   .guestBook #guests {
-    font-size: 4vw;
+    font-size: 3vw;
   }
 }
 

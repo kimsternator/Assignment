@@ -233,6 +233,14 @@ td {
     height: 6vw;
     width: 100%;
   }
+
+  .guestBook label {
+    font-size: 8vw;
+  }
+
+  .guestBook #guests {
+    font-size: 4vw;
+  }
 }
 
 /* Smaller than desktop */

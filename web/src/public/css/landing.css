@@ -3,7 +3,7 @@ body {
   color: #b98af6;
   max-width: 100%;
   overflow-x: hidden;
-  font-family: Apple Chancery, cursive;
+  font-family: Apple Chancery;
 }
 
 .header {
@@ -236,7 +236,6 @@ p.classLink:hover {
 .content {
   text-align: center;
   margin-top: 30%;
-  font-family: Apple Chancery, cursive;
   font-size: 1vw;
 }
 

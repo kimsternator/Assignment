@@ -152,7 +152,7 @@ h2 {
 /*  Mobile */
 @media only screen and (max-width: 800px) {
   #name {
-    font-size: 7vw;
+    font-size: 10vw;
   }
   
   #sidebar .toggle-btn span {
